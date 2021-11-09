@@ -1,6 +1,6 @@
 # blockchain-developer-bootcamp-final-project
 
-This project is about a DAI staking mechanism
+This project is all about DAI staking
 whereby, the user receives AyaaToken as a reward for staking DAI in the contract.
 Further, the user can purchase a ayaa NFT through the NFT factory named Boi.
 The AyaaTokens are sent to a lottery pool inside the Lottery contract.
