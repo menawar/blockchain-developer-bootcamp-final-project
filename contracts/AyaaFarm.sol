@@ -1,14 +1,58 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-contract AyahFarm {
-  function stakeDai(uint256 amount) public {}
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "./AyaaToken.sol";
+
+contract AyaaFarm {
+  mapping(address => uint256) public stakingBalance;
+  mapping(address => bool) public isStaking;
+  mapping(address => uint256) public startTime;
+  mapping(address => uint256) public ayaaBalance;
+
+  IERC20 public daiToken;
+  AyaaToken public ayaaToken;
+
+  event Stake(address indexed from, uint256 amount);
+
+  constructor(IERC20 _daiToken, AyaaToken _ayaaToken) {
+    daiToken = _daiToken;
+    ayaaToken = _ayaaToken;
+  }
+
+  function stakeDai(uint256 amount) public {
+    require(
+      amount > 0 && daiToken.balanceOf(msg.sender) >= amount,
+      "You cannot stake zero tokens"
+    );
+
+    if (isStaking[msg.sender] == true) {
+      uint256 toTransfer = calYieldTotal(msg.sender);
+      ayaaBalance[msg.sender] += toTransfer;
+    }
+
+    daiToken.transferFrom(msg.sender, address(this), amount);
+    stakingBalance[msg.sender] += amount;
+    startTime[msg.sender] = block.timestamp;
+    isStaking[msg.sender] = true;
+    emit Stake(msg.sender, amount);
+  }
 
   function unstakeDai(uint256 amount) public {}
 
-  function calYieldTime(address user) public view returns (uint256) {}
+  function calYieldTime(address user) public view returns (uint256) {
+    uint256 end = block.timestamp;
+    uint256 totalTime = end - startTime[user];
+    return totalTime;
+  }
 
-  function calYieldTotal(address user) public view returns (uint256) {}
+  function calYieldTotal(address user) public view returns (uint256) {
+    uint256 time = calYieldTime(user) * 10**18;
+    uint256 rate = 86400;
+    uint256 timeRate = time / rate;
+    uint256 rawYield = (stakingBalance[user] * timeRate) / 10**18;
+    return rawYield;
+  }
 
   function withdrawYield() public {}
 
