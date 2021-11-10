@@ -14,6 +14,7 @@ contract AyaaFarm {
   AyaaToken public ayaaToken;
 
   event Stake(address indexed from, uint256 amount);
+  event YieldWithdraw(address indexed to, uint256 amount);
 
   constructor(IERC20 _daiToken, AyaaToken _ayaaToken) {
     daiToken = _daiToken;
@@ -27,7 +28,7 @@ contract AyaaFarm {
     );
 
     if (isStaking[msg.sender] == true) {
-      uint256 toTransfer = calYieldTotal(msg.sender);
+      uint256 toTransfer = getYieldTotal(msg.sender);
       ayaaBalance[msg.sender] += toTransfer;
     }
 
@@ -40,21 +41,38 @@ contract AyaaFarm {
 
   function unstakeDai(uint256 amount) public {}
 
-  function calYieldTime(address user) public view returns (uint256) {
+  function getYieldTime(address user) public view returns (uint256) {
     uint256 end = block.timestamp;
     uint256 totalTime = end - startTime[user];
     return totalTime;
   }
 
-  function calYieldTotal(address user) public view returns (uint256) {
-    uint256 time = calYieldTime(user) * 10**18;
+  function getYieldTotal(address user) public view returns (uint256) {
+    uint256 time = getYieldTime(user) * 10**18;
     uint256 rate = 86400;
     uint256 timeRate = time / rate;
     uint256 rawYield = (stakingBalance[user] * timeRate) / 10**18;
     return rawYield;
   }
 
-  function withdrawYield() public {}
+  function withdrawYield() public {
+    uint256 toTransfer = getYieldTotal(msg.sender);
+
+    require(
+      toTransfer > 0 || ayaaBalance[msg.sender] > 0,
+      "Nothing to withdraw"
+    );
+
+    if (ayaaBalance[msg.sender] != 0) {
+      uint256 oldBalance = ayaaBalance[msg.sender];
+      ayaaBalance[msg.sender] = 0;
+      toTransfer += oldBalance;
+    }
+
+    startTime[msg.sender] = block.timestamp;
+    ayaaToken.mint(msg.sender, toTransfer);
+    emit YieldWithdraw(msg.sender, toTransfer);
+  }
 
   function mintNFT(address user, string memory tokenURI) public {}
 }
