@@ -14,6 +14,7 @@ contract AyaaFarm {
   AyaaToken public ayaaToken;
 
   event Stake(address indexed from, uint256 amount);
+  event Unstake(address indexed from, uint256 amount);
   event YieldWithdraw(address indexed to, uint256 amount);
 
   constructor(IERC20 _daiToken, AyaaToken _ayaaToken) {
@@ -39,7 +40,23 @@ contract AyaaFarm {
     emit Stake(msg.sender, amount);
   }
 
-  function unstakeDai(uint256 amount) public {}
+  function unstakeDai(uint256 amount) public {
+    require(
+      isStaking[msg.sender] = true && stakingBalance[msg.sender] >= amount,
+      "Nothing to unstake"
+    );
+    uint256 yieldTransfer = getYieldTotal(msg.sender);
+    startTime[msg.sender] = block.timestamp;
+    uint256 balTransfer = amount;
+    amount = 0;
+    stakingBalance[msg.sender] -= balTransfer;
+    daiToken.transfer(msg.sender, balTransfer);
+    pmknBalance[msg.sender] += yieldTransfer;
+    if (stakingBalance[msg.sender] == 0) {
+      isStaking[msg.sender] = false;
+    }
+    emit Unstake(msg.sender, balTransfer);
+  }
 
   function getYieldTime(address user) public view returns (uint256) {
     uint256 end = block.timestamp;
@@ -73,6 +90,4 @@ contract AyaaFarm {
     ayaaToken.mint(msg.sender, toTransfer);
     emit YieldWithdraw(msg.sender, toTransfer);
   }
-
-  function mintNFT(address user, string memory tokenURI) public {}
 }
