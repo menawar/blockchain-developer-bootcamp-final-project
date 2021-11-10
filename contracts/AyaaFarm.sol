@@ -45,17 +45,17 @@ contract AyaaFarm {
       isStaking[msg.sender] = true && stakingBalance[msg.sender] >= amount,
       "Nothing to unstake"
     );
-    uint256 yieldTransfer = getYieldTotal(msg.sender);
+    uint256 yieldToTransfer = getYieldTotal(msg.sender);
     startTime[msg.sender] = block.timestamp;
-    uint256 balTransfer = amount;
+    uint256 balToTransfer = amount;
     amount = 0;
-    stakingBalance[msg.sender] -= balTransfer;
-    daiToken.transfer(msg.sender, balTransfer);
-    pmknBalance[msg.sender] += yieldTransfer;
+    stakingBalance[msg.sender] -= balToTransfer;
+    daiToken.transfer(msg.sender, balToTransfer);
+    ayaaBalance[msg.sender] += yieldToTransfer;
     if (stakingBalance[msg.sender] == 0) {
       isStaking[msg.sender] = false;
     }
-    emit Unstake(msg.sender, balTransfer);
+    emit Unstake(msg.sender, balToTransfer);
   }
 
   function getYieldTime(address user) public view returns (uint256) {
