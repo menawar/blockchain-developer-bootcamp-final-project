@@ -32,10 +32,6 @@ describe("AyaaFarm Contract", () => {
     mockDai = await MockERC20.deploy("MockDai", "mDAI");
     ayaaToken = await AyaaToken.deploy();
 
-    /*//////////////////////
-          // Dai Transfers      //
-          //////////////////////*/
-
     await Promise.all([
       mockDai.mint(owner.address, daiAmount),
       mockDai.mint(wuryen.address, daiAmount),
@@ -69,6 +65,54 @@ describe("AyaaFarm Contract", () => {
 
     it("should show mockDai balance", async () => {
       expect(await mockDai.balanceOf(owner.address)).to.eq(daiAmount);
+    });
+  });
+
+  describe("Staking", async () => {
+    it("should stake and update mapping", async () => {
+      let toTransfer = ethers.utils.parseEther("100");
+      await mockDai.connect(wuryen).approve(ayaaFarm.address, toTransfer);
+
+      expect(await ayaaFarm.isStaking(wuryen.address)).to.eq(false);
+
+      expect(await ayaaFarm.connect(wuryen).stakeDai(toTransfer)).to.be.ok;
+
+      expect(await ayaaFarm.stakingBalance(wuryen.address)).to.eq(toTransfer);
+
+      expect(await ayaaFarm.isStaking(wuryen.address)).to.eq(true);
+    });
+
+    it("should remove dai from user", async () => {
+      res = await mockDai.balanceOf(wuryen.address);
+      expect(Number(res)).to.be.lessThan(Number(daiAmount));
+    });
+
+    it("should update balance with multiple stakes", async () => {
+      let toTransfer = ethers.utils.parseEther("100");
+      await mockDai.connect(agnes).approve(ayaaFarm.address, toTransfer);
+      await ayaaFarm.connect(agnes).stakeDai(toTransfer);
+    });
+
+    it("should revert stake with zero as staked amount", async () => {
+      await expect(ayaaFarm.connect(kwakba).stakeDai(0)).to.be.revertedWith(
+        "You cannot stake zero tokens"
+      );
+    });
+
+    it("should revert stake without allowance", async () => {
+      let toTransfer = ethers.utils.parseEther("50");
+      await expect(
+        ayaaFarm.connect(kwakba).stakeDai(toTransfer)
+      ).to.be.revertedWith("transfer amount exceeds allowance");
+    });
+
+    it("should revert with not enough funds", async () => {
+      let toTransfer = ethers.utils.parseEther("1000000");
+      await mockDai.approve(ayaaFarm.address, toTransfer);
+
+      await expect(
+        ayaaFarm.connect(kwakba).stakeDai(toTransfer)
+      ).to.be.revertedWith("You cannot stake zero tokens");
     });
   });
 });
