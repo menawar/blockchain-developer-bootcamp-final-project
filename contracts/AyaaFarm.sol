@@ -13,6 +13,8 @@ contract AyaaFarm {
   IERC20 public daiToken;
   AyaaToken public ayaaToken;
 
+  string public name = "Ayaa Farm";
+
   event Stake(address indexed from, uint256 amount);
   event Unstake(address indexed from, uint256 amount);
   event YieldWithdraw(address indexed to, uint256 amount);
