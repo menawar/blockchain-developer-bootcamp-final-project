@@ -115,4 +115,26 @@ describe("AyaaFarm Contract", () => {
       ).to.be.revertedWith("You cannot stake zero tokens");
     });
   });
+  describe("Unstaking", async () => {
+    it("should unstake balance from user", async () => {
+      res = await ayaaFarm.stakingBalance(wuryen.address);
+      expect(Number(res)).to.be.greaterThan(0);
+
+      let toTransfer = ethers.utils.parseEther("100");
+      await ayaaFarm.connect(wuryen).unstakeDai(toTransfer);
+      res = await ayaaFarm.stakingBalance(wuryen.address);
+      expect(Number(res)).to.eq(0);
+    });
+
+    it("should remove staking status", async () => {
+      expect(await ayaaFarm.isStaking(wuryen.address)).to.eq(false);
+    });
+
+    it("should transfer ownership", async () => {
+      let minter = await ayaaToken.MINTER_ROLE();
+      await ayaaToken.grantRole(minter, ayaaFarm.address);
+
+      expect(await ayaaToken.hasRole(minter, ayaaFarm.address)).to.eq(true);
+    });
+  });
 });
