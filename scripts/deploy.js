@@ -1,30 +1,45 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
-const hre = require("hardhat");
+const main = async () => {
+  const gameContractFactory = await hre.ethers.getContractFactory("Game");
+  const gameContract = await gameContractFactory.deploy(
+    ["Leo", "Aang", "Pikachu"],
+    [
+      "https://i.imgur.com/pKd5Sdk.png",
+      "https://i.imgur.com/xVu4vFL.png",
+      "https://i.imgur.com/u7T87A6.png",
+    ],
+    [100, 200, 300],
+    [100, 50, 25],
+    "Buhari", // Boss name
+    "https://i.imgur.com/AksR0tt.png", // Boss image
+    10000, // Boss hp
+    50 // Boss attack damage
+  );
+  await gameContract.deployed();
+  console.log("Contract deployed to:", gameContract.address);
 
-async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
+  let txn;
+  txn = await gameContract.mintCharacterNFT(2);
+  await txn.wait();
 
-  // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  txn = await gameContract.attackBoss();
+  await txn.wait();
 
-  await greeter.deployed();
+  txn = await gameContract.attackBoss();
+  await txn.wait();
 
-  console.log("Greeter deployed to:", greeter.address);
-}
+  // Get the value of the NFT's URI.
+  let returnedTokenUri = await gameContract.tokenURI(1);
+  console.log("Token URI:", returnedTokenUri);
+};
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+const runMain = async () => {
+  try {
+    await main();
+    process.exit(0);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+runMain();
