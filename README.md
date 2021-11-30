@@ -16,6 +16,10 @@ First, you will need to `clone` or `fork` the repository into your Github accoun
 $ git clone https://github.com/menawar/blockchain-developer-bootcamp-final-project
 ```
 
+## Public Ethereum wallet for certification:
+
+`0xa942D36b910031058d11f4d3B836F1F69Aeba1d7`
+
 ### Installing
 
 First, you will need to install the dependencies with: `npm install`.
