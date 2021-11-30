@@ -14688,18 +14688,42 @@
   "ast": {
     "absolutePath": "project:/contracts/NFTCollection.sol",
     "exportedSymbols": {
-      "Address": [1657],
-      "Context": [1679],
-      "ERC165": [1906],
-      "ERC721": [830],
-      "ERC721Enumerable": [1302],
-      "IERC165": [1918],
-      "IERC721": [946],
-      "IERC721Enumerable": [1333],
-      "IERC721Metadata": [1360],
-      "IERC721Receiver": [964],
-      "NFTCollection": [2046],
-      "Strings": [1882]
+      "Address": [
+        1657
+      ],
+      "Context": [
+        1679
+      ],
+      "ERC165": [
+        1906
+      ],
+      "ERC721": [
+        830
+      ],
+      "ERC721Enumerable": [
+        1302
+      ],
+      "IERC165": [
+        1918
+      ],
+      "IERC721": [
+        946
+      ],
+      "IERC721Enumerable": [
+        1333
+      ],
+      "IERC721Metadata": [
+        1360
+      ],
+      "IERC721Receiver": [
+        964
+      ],
+      "NFTCollection": [
+        2046
+      ],
+      "Strings": [
+        1882
+      ]
     },
     "id": 2047,
     "license": "MIT",
@@ -14707,7 +14731,12 @@
     "nodes": [
       {
         "id": 1920,
-        "literals": ["solidity", "^", "0.8", ".0"],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
         "nodeType": "PragmaDirective",
         "src": "32:23:11"
       },
@@ -14761,12 +14790,29 @@
             "src": "229:16:11"
           }
         ],
-        "contractDependencies": [830, 946, 1302, 1333, 1360, 1679, 1906, 1918],
+        "contractDependencies": [
+          830,
+          946,
+          1302,
+          1333,
+          1360,
+          1679,
+          1906,
+          1918
+        ],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 2046,
         "linearizedBaseContracts": [
-          2046, 1302, 1333, 830, 1360, 946, 1906, 1918, 1679
+          2046,
+          1302,
+          1333,
+          830,
+          1360,
+          946,
+          1906,
+          1918,
+          1679
         ],
         "name": "NFTCollection",
         "nodeType": "ContractDefinition",
@@ -14976,7 +15022,10 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [829, 1140],
+            "baseFunctions": [
+              829,
+              1140
+            ],
             "body": {
               "id": 1965,
               "nodeType": "Block",
@@ -15211,7 +15260,10 @@
             "visibility": "internal"
           },
           {
-            "baseFunctions": [93, 1014],
+            "baseFunctions": [
+              93,
+              1014
+            ],
             "body": {
               "id": 1981,
               "nodeType": "Block",
@@ -15389,7 +15441,9 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [207],
+            "baseFunctions": [
+              207
+            ],
             "body": {
               "id": 2001,
               "nodeType": "Block",
@@ -15477,7 +15531,10 @@
                       "id": 1990,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "906:7:11",
                       "typeDescriptions": {
@@ -15726,7 +15783,10 @@
                       "id": 2007,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "1105:7:11",
                       "typeDescriptions": {
@@ -15821,7 +15881,9 @@
                   "src": "1181:25:11"
                 },
                 {
-                  "assignments": [2022],
+                  "assignments": [
+                    2022
+                  ],
                   "declarations": [
                     {
                       "constant": false,
@@ -16004,7 +16066,10 @@
                       "id": 2032,
                       "name": "_safeMint",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [494, 523],
+                      "overloadedDeclarations": [
+                        494,
+                        523
+                      ],
                       "referencedDeclaration": 494,
                       "src": "1289:9:11",
                       "typeDescriptions": {
@@ -16167,18 +16232,42 @@
   "legacyAST": {
     "absolutePath": "project:/contracts/NFTCollection.sol",
     "exportedSymbols": {
-      "Address": [1657],
-      "Context": [1679],
-      "ERC165": [1906],
-      "ERC721": [830],
-      "ERC721Enumerable": [1302],
-      "IERC165": [1918],
-      "IERC721": [946],
-      "IERC721Enumerable": [1333],
-      "IERC721Metadata": [1360],
-      "IERC721Receiver": [964],
-      "NFTCollection": [2046],
-      "Strings": [1882]
+      "Address": [
+        1657
+      ],
+      "Context": [
+        1679
+      ],
+      "ERC165": [
+        1906
+      ],
+      "ERC721": [
+        830
+      ],
+      "ERC721Enumerable": [
+        1302
+      ],
+      "IERC165": [
+        1918
+      ],
+      "IERC721": [
+        946
+      ],
+      "IERC721Enumerable": [
+        1333
+      ],
+      "IERC721Metadata": [
+        1360
+      ],
+      "IERC721Receiver": [
+        964
+      ],
+      "NFTCollection": [
+        2046
+      ],
+      "Strings": [
+        1882
+      ]
     },
     "id": 2047,
     "license": "MIT",
@@ -16186,7 +16275,12 @@
     "nodes": [
       {
         "id": 1920,
-        "literals": ["solidity", "^", "0.8", ".0"],
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
         "nodeType": "PragmaDirective",
         "src": "32:23:11"
       },
@@ -16240,12 +16334,29 @@
             "src": "229:16:11"
           }
         ],
-        "contractDependencies": [830, 946, 1302, 1333, 1360, 1679, 1906, 1918],
+        "contractDependencies": [
+          830,
+          946,
+          1302,
+          1333,
+          1360,
+          1679,
+          1906,
+          1918
+        ],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 2046,
         "linearizedBaseContracts": [
-          2046, 1302, 1333, 830, 1360, 946, 1906, 1918, 1679
+          2046,
+          1302,
+          1333,
+          830,
+          1360,
+          946,
+          1906,
+          1918,
+          1679
         ],
         "name": "NFTCollection",
         "nodeType": "ContractDefinition",
@@ -16455,7 +16566,10 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [829, 1140],
+            "baseFunctions": [
+              829,
+              1140
+            ],
             "body": {
               "id": 1965,
               "nodeType": "Block",
@@ -16690,7 +16804,10 @@
             "visibility": "internal"
           },
           {
-            "baseFunctions": [93, 1014],
+            "baseFunctions": [
+              93,
+              1014
+            ],
             "body": {
               "id": 1981,
               "nodeType": "Block",
@@ -16868,7 +16985,9 @@
             "visibility": "public"
           },
           {
-            "baseFunctions": [207],
+            "baseFunctions": [
+              207
+            ],
             "body": {
               "id": 2001,
               "nodeType": "Block",
@@ -16956,7 +17075,10 @@
                       "id": 1990,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "906:7:11",
                       "typeDescriptions": {
@@ -17205,7 +17327,10 @@
                       "id": 2007,
                       "name": "require",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [4294967278, 4294967278],
+                      "overloadedDeclarations": [
+                        4294967278,
+                        4294967278
+                      ],
                       "referencedDeclaration": 4294967278,
                       "src": "1105:7:11",
                       "typeDescriptions": {
@@ -17300,7 +17425,9 @@
                   "src": "1181:25:11"
                 },
                 {
-                  "assignments": [2022],
+                  "assignments": [
+                    2022
+                  ],
                   "declarations": [
                     {
                       "constant": false,
@@ -17483,7 +17610,10 @@
                       "id": 2032,
                       "name": "_safeMint",
                       "nodeType": "Identifier",
-                      "overloadedDeclarations": [494, 523],
+                      "overloadedDeclarations": [
+                        494,
+                        523
+                      ],
                       "referencedDeclaration": 494,
                       "src": "1289:9:11",
                       "typeDescriptions": {
@@ -17651,12 +17781,12 @@
     "4": {
       "events": {},
       "links": {},
-      "address": "0x6A6FAaEc81226D380F9a66AD3595FA99E3c26425",
-      "transactionHash": "0x9f1c8405c94450fb58f30cfd245f9c5d09cd02b8827c48624253a0ad543a718b"
+      "address": "0x3D8649540a70A9408943A65Fb2b81f1e0F057259",
+      "transactionHash": "0x98d8e864669b7bd28c36d688e99214b784a343c9f29cafa2c34ca0eff923c780"
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2021-11-30T11:39:54.609Z",
+  "updatedAt": "2021-11-30T22:30:37.761Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

@@ -140,7 +140,7 @@ const MintForm = () => {
       </div>
       <button
         type="submit"
-        className="btn btn-lg btn-info text-white btn-block"
+        className="btn btn-lg btn-danger text-white btn-block"
       >
         MINT
       </button>

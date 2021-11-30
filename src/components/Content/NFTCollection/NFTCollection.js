@@ -109,7 +109,7 @@ const NFTCollection = () => {
                     <button
                       onClick={buyHandler}
                       value={index}
-                      className="btn btn-success"
+                      className="btn btn-danger"
                     >
                       BUY
                     </button>
@@ -158,7 +158,7 @@ const NFTCollection = () => {
                 onSubmit={(e) => makeOfferHandler(e, NFT.id, key)}
               >
                 <div className="col-5 d-grid gap-2">
-                  <button type="submit" className="btn btn-secondary">
+                  <button type="submit" className="btn btn-danger">
                     OFFER
                   </button>
                 </div>

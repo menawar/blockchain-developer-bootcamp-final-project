@@ -20,6 +20,10 @@ First, you will need to `clone` or `fork` the repository into your Github accoun
 $ git clone https://github.com/menawar/blockchain-developer-bootcamp-final-project
 ```
 
+## Screencast link
+
+https://www.loom.com/share/af301b46e1a5426ba99b94fea387b90cgoQUg
+
 ## Public Ethereum wallet for certification:
 
 `0xa942D36b910031058d11f4d3B836F1F69Aeba1d7`
