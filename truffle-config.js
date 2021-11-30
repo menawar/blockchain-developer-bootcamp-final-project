@@ -44,6 +44,7 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
+    contracts_build_directory: "./src/abis",
     development: {
       host: "127.0.0.1",
       port: 8545,
