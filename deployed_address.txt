@@ -1,0 +1,3 @@
+NFTMarketplace Address:  0xf73d57f0fB1Ef115BFc5B020f32DdF05952ddf85
+NFTCollection Address:   0x6A6FAaEc81226D380F9a66AD3595FA99E3c26425
+Network: Rinkeby
