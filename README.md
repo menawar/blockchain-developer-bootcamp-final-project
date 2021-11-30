@@ -4,6 +4,10 @@
 
 This is an open decentralized NFT Marketplace built with smart contracts powered by Ethereum. It basically consists in an open platform where each user can mint his own NFT and expose it on a marketplace.
 
+## Deployed version url:
+
+https://menawar.github.io/blockchain-developer-bootcamp-final-project/
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
